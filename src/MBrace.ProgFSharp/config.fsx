@@ -45,7 +45,7 @@ module Config =
                 | Let "subscriptionId" f -> f (sprintf "%A : string option" subscriptionId)
                 | Let "clusterName" f -> f (sprintf "%A" clusterName)
                 | Let "region" f -> f (sprintf "Region.Define %A" region.Id)
-                | Let "vmSize" f -> f (sprintf "VMSize.Define %A" vmSize)
+                | Let "vmSize" f -> f (sprintf "VMSize.Define %A" vmSize.Id)
                 | Let "vmCount" f -> f (string vmCount)
                 | l -> l ]
 
