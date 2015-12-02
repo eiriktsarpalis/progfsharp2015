@@ -46,7 +46,8 @@
   <ItemGroup>
     <None Include="chapter-1-provision-cluster.fsx" />
     <None Include="paket.references" />
-    <None Include="config.fsx" />
+    <None Include="utils\utils.fsx" />
+    <None Include="utils\config.fsx" />
   </ItemGroup>
   <PropertyGroup>
     <MinimumVisualStudioVersion Condition="'$(MinimumVisualStudioVersion)' == ''">11</MinimumVisualStudioVersion>

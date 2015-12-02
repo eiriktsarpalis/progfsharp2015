@@ -1,5 +1,5 @@
-﻿#load "../../packages/MBrace.Azure/MBrace.Azure.fsx"
-#load "../../packages/MBrace.Azure.Management/MBrace.Azure.Management.fsx"
+﻿#load "../../../packages/MBrace.Azure/MBrace.Azure.fsx"
+#load "../../../packages/MBrace.Azure.Management/MBrace.Azure.Management.fsx"
  
 namespace global
 
@@ -32,6 +32,29 @@ module Config =
     // Your prefered cluster count
     let vmCount = 4
 
+    /// Gets the already existing deployment
+    let GetDeployment() = Deployment.GetDeployment(pubSettingsFile, serviceName = clusterName, ?subscriptionId = subscriptionId) 
+
+    /// Provisions a new cluster to Azure with supplied parameters
+    let ProvisionCluster() = 
+        Deployment.Provision(pubSettingsFile, region, vmCount, vmSize, serviceName = clusterName, ?subscriptionId = subscriptionId)
+
+    /// Resizes the cluster using an updated VM count
+    let ResizeCluster(newVmCount : int) =
+        let deployment = GetDeployment()
+        deployment.Resize(newVmCount)
+
+    /// Deletes an existing cluster deployment
+    let DeleteCluster() =
+        let deployment = GetDeployment()
+        deployment.Delete()
+
+    /// Connect to the cluster 
+    let GetCluster() = 
+        let deployment = GetDeployment()
+        AzureCluster.Connect(deployment, logger = ConsoleLogger(true), logLevel = LogLevel.Info)
+
+    /// Updates the current config file with supplied parameters
     let UpdateConfig(pubSettingsPath : string, subscriptionId : string option, clusterName : string, region : Region, vmSize : VMSize, vmCount : int) =
         let this = Path.Combine(__SOURCE_DIRECTORY__, __SOURCE_FILE__)
         let updatedLines =
@@ -50,42 +73,3 @@ module Config =
                 | l -> l ]
 
         File.WriteAllLines(this, updatedLines)
-
-        
-
-//    // set to true if you would like to provision
-//    // the custom cloud service bundled with the StarterKit
-//    // In order to use this feature, you will need to open
-//    // the `CustomCloudService` solution under the `azure` folder 
-//    // inside the MBrace.StarterKit repo.
-//    // Right click on the cloud service item and hit "Package.."
-//    let useCustomCloudService = false
-//    let private tryGetCustomCsPkg () =
-//        if useCustomCloudService then
-//            let path = __SOURCE_DIRECTORY__ + "/../azure/CustomCloudService/bin/app.publish/MBrace.Azure.CloudService.cspkg" |> Path.GetFullPath
-//            if not <| File.Exists path then failwith "Find the 'MBrace.Azure.CloudService' project under 'azure\CustomCloudService' and hit 'Package...'."
-//            Some path
-//        else
-//            None
-//
-//    /// Gets the already existing deployment
-//    let GetDeployment() = Deployment.GetDeployment(pubSettingsFile, serviceName = clusterName, ?subscriptionId = subscriptionId) 
-//
-//    /// Provisions a new cluster to Azure with supplied parameters
-//    let ProvisionCluster() = 
-//        Deployment.Provision(pubSettingsFile, region, vmCount, vmSize, serviceName = clusterName, ?subscriptionId = subscriptionId, ?cloudServicePackage = tryGetCustomCsPkg())
-//
-//    /// Resizes the cluster using an updated VM count
-//    let ResizeCluster(newVmCount : int) =
-//        let deployment = GetDeployment()
-//        deployment.Resize(newVmCount)
-//
-//    /// Deletes an existing cluster deployment
-//    let DeleteCluster() =
-//        let deployment = GetDeployment()
-//        deployment.Delete()
-//
-//    /// Connect to the cluster 
-//    let GetCluster() = 
-//        let deployment = GetDeployment()
-//        AzureCluster.Connect(deployment, logger = ConsoleLogger(true), logLevel = LogLevel.Info)
