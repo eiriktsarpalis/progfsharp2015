@@ -19,7 +19,7 @@ module Config =
 
     // If your publication settings defines more than one subscription,
     // you will need to specify which one you will be using here.
-    let subscriptionId : string option = None
+    let subscriptionId = None : string option
 
     // Your prefered Azure service name for the cluster.
     // NB: must be a valid DNS prefix unique across Azure.
@@ -41,9 +41,9 @@ module Config =
                     else None
 
                 match line with
-                | Let "pubSettingsFile" f -> f pubSettingsPath
-                | Let "subscriptionId" f -> f (sprintf "%A" subscriptionId)
-                | Let "clusterName" f -> f clusterName
+                | Let "pubSettingsFile" f -> f (sprintf "%A" pubSettingsPath)
+                | Let "subscriptionId" f -> f (sprintf "%A : string option" subscriptionId)
+                | Let "clusterName" f -> f (sprintf "%A" clusterName)
                 | Let "region" f -> f (sprintf "Region.Define %A" region.Id)
                 | Let "vmSize" f -> f (sprintf "VMSize.Define %A" vmSize)
                 | Let "vmCount" f -> f (string vmCount)
