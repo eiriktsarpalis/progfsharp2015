@@ -37,16 +37,16 @@ module Config =
         let updatedLines =
             [ for line in File.ReadAllLines this ->
                 let (|Let|_|) (name : string) (line : string) =
-                    if line.TrimStart().StartsWith("let " + name + " =") then Some(fun value -> sprintf "    let %s = %A" name value)
+                    if line.TrimStart().StartsWith("let " + name + " =") then Some(fun value -> sprintf "    let %s = %s" name value)
                     else None
 
                 match line with
                 | Let "pubSettingsFile" f -> f pubSettingsPath
-                | Let "subscriptionId" f -> f subscriptionId
+                | Let "subscriptionId" f -> f (sprintf "%A" subscriptionId)
                 | Let "clusterName" f -> f clusterName
-                | Let "region" f -> f region
-                | Let "vmSize" f -> f vmSize
-                | Let "vmCount" f -> f vmCount
+                | Let "region" f -> f (sprintf "Region.Define %A" region.Id)
+                | Let "vmSize" f -> f (sprintf "VMSize.Define %A" vmSize)
+                | Let "vmCount" f -> f (string vmCount)
                 | l -> l ]
 
         File.WriteAllLines(this, updatedLines)
