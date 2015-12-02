@@ -1,9 +1,7 @@
 source https://nuget.org/api/v2
 
-nuget FSharp.Formatting
-nuget NUnit ~> 2
-nuget NUnit.Runners ~> 2
 nuget FAKE
-nuget SourceLink.Fake
+nuget MBrace.Azure 1.1.8
+nuget MBrace.Azure.Management
 
 github fsharp/FAKE modules/Octokit/Octokit.fsx

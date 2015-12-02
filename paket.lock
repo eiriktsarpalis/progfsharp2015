@@ -1,26 +1,123 @@
 NUGET
   remote: https://nuget.org/api/v2
   specs:
-    FAKE (3.28.7)
-    FSharp.Compiler.Service (0.0.89)
-    FSharp.Formatting (2.9.0)
-      FSharp.Compiler.Service (>= 0.0.87)
-      FSharpVSPowerTools.Core (1.8.0)
-    FSharpVSPowerTools.Core (1.8.0)
-      FSharp.Compiler.Service (>= 0.0.87)
+    Argu (1.1.2)
+    FAKE (4.10.3)
+    FsPickler (1.6.2)
+    FsPickler.Json (1.6.2)
+      FsPickler (1.6.2)
+      Newtonsoft.Json (>= 6.0.5)
+    Hyak.Common (1.0.3)
+      Microsoft.Bcl (>= 1.1.9) - framework: portable-net403+win+wpa81
+      Microsoft.Bcl.Async (>= 1.0.168) - framework: portable-net403+win+wpa81
+      Microsoft.Bcl.Build (>= 1.0.14) - framework: portable-net403+win+wpa81
+      Microsoft.Net.Http (>= 2.2.22) - framework: portable-net403+win+wpa81
+      Newtonsoft.Json (>= 6.0.4) - framework: portable-net403+win+wpa81
+    MBrace.Azure (1.1.8)
+      Argu (>= 1.0.0 < 2.0.0)
+      FsPickler (>= 1.6.2)
+      FsPickler.Json (>= 1.6.2)
+      MBrace.Core (>= 1.0.3 < 1.1.0)
+      MBrace.Runtime (>= 1.0.3 < 1.1.0)
+      Newtonsoft.Json (>= 7.0.1)
+      Vagabond (>= 0.12.2)
+      WindowsAzure.ServiceBus (>= 2.5.2 < 2.6.0)
+      WindowsAzure.Storage (>= 4.3.0 < 4.4.0)
+    MBrace.Azure.Management (1.1.8)
+      MBrace.Azure (>= 1.1.8)
+      MBrace.Core (>= 1.0.3 < 1.1.0)
+      MBrace.Runtime (>= 1.0.3 < 1.1.0)
+      Microsoft.Bcl.Async
+      Microsoft.WindowsAzure.Management.Libraries
+      Microsoft.WindowsAzure.Management.ServiceBus
+      WindowsAzure.ServiceBus (>= 2.5.2 < 2.6.0)
+      WindowsAzure.Storage (>= 4.3.0 < 4.4.0)
+    MBrace.Core (1.0.3)
+    MBrace.Runtime (1.0.3)
+      FsPickler (>= 1.6.2 < 1.7.0)
+      FsPickler.Json (>= 1.6.2 < 1.7.0)
+      MBrace.Core (1.0.3)
+      Vagabond (>= 0.12.2 < 0.13.0)
+    Microsoft.Azure.Common (2.1.0)
+      Hyak.Common (>= 1.0.2)
+      Microsoft.Azure.Common.Dependencies (>= 1.0.0)
+    Microsoft.Azure.Common.Dependencies (1.0.0)
+      Microsoft.Bcl (>= 1.1.9) - framework: >= net40, portable-net45+wp80+wpa81+win
+      Microsoft.Bcl.Async (>= 1.0.168) - framework: >= net40, portable-net45+wp80+wpa81+win
+      Microsoft.Bcl.Build (>= 1.0.14) - framework: >= net40, portable-net45+wp80+wpa81+win
+      Microsoft.Net.Http (>= 2.2.22) - framework: >= net40, portable-net45+wp80+wpa81+win
+      Newtonsoft.Json (>= 6.0.4) - framework: >= net40, portable-net45+wp80+wpa81+win
     Microsoft.Bcl (1.1.10)
       Microsoft.Bcl.Build (>= 1.0.14)
-    Microsoft.Bcl.Build (1.0.21)
+    Microsoft.Bcl.Async (1.0.168)
+      Microsoft.Bcl (>= 1.1.8)
+    Microsoft.Bcl.Build (1.0.21) - import_targets: false
+    Microsoft.Data.Edm (5.7.0) - framework: >= net40, winv4.5, wpv8.1, wpv8.0
+    Microsoft.Data.OData (5.7.0) - framework: >= net40, winv4.5, wpv8.1, wpv8.0
+      Microsoft.Data.Edm (5.7.0)
+      System.Spatial (5.7.0)
+    Microsoft.Data.Services.Client (5.7.0) - framework: >= net40
+      Microsoft.Data.OData (5.7.0)
     Microsoft.Net.Http (2.2.29)
       Microsoft.Bcl (>= 1.1.10)
       Microsoft.Bcl.Build (>= 1.0.14)
-    NUnit (2.6.4)
-    NUnit.Runners (2.6.4)
-    Octokit (0.9.0)
+    Microsoft.WindowsAzure.Common (1.4.1)
+      Microsoft.WindowsAzure.Common.Dependencies (>= 1.1.1)
+    Microsoft.WindowsAzure.Common.Dependencies (1.1.1)
+      Microsoft.Bcl (>= 1.1.9) - framework: >= net40, portable-net45+wp80+wpa81+win
+      Microsoft.Bcl.Async (>= 1.0.168) - framework: >= net40, portable-net45+wp80+wpa81+win
+      Microsoft.Bcl.Build (>= 1.0.14) - framework: >= net40, portable-net45+wp80+wpa81+win
+      Microsoft.Net.Http (>= 2.2.22) - framework: >= net40, portable-net45+wp80+wpa81+win
+      Newtonsoft.Json (>= 6.0.4) - framework: >= net40, portable-net45+wp80+wpa81+win
+    Microsoft.WindowsAzure.ConfigurationManager (3.1.0)
+    Microsoft.WindowsAzure.Management (4.1.1)
+      Microsoft.Azure.Common (>= 2.0.4 < 3.0)
+    Microsoft.WindowsAzure.Management.Compute (12.3.1)
+      Microsoft.Azure.Common (>= 2.0.4 < 3.0)
+    Microsoft.WindowsAzure.Management.Libraries (2.0.0)
+      Microsoft.WindowsAzure.Common (>= 1.3.0 < 2.0)
+      Microsoft.WindowsAzure.Management (>= 2.0.0)
+      Microsoft.WindowsAzure.Management.Compute (>= 5.0.0)
+      Microsoft.WindowsAzure.Management.MediaServices (>= 2.0.0)
+      Microsoft.WindowsAzure.Management.Monitoring (>= 1.0.0)
+      Microsoft.WindowsAzure.Management.Network (>= 3.0.0)
+      Microsoft.WindowsAzure.Management.Scheduler (>= 3.0.0)
+      Microsoft.WindowsAzure.Management.Sql (>= 3.0.0)
+      Microsoft.WindowsAzure.Management.Storage (>= 3.0.0)
+      Microsoft.WindowsAzure.Management.WebSites (>= 3.0.0)
+    Microsoft.WindowsAzure.Management.MediaServices (4.1.0)
+      Microsoft.Azure.Common (>= 2.0.1 < 3.0)
+    Microsoft.WindowsAzure.Management.Monitoring (4.1.0)
+      Microsoft.Azure.Common (>= 2.0.1 < 3.0)
+    Microsoft.WindowsAzure.Management.Network (7.0.4)
+      Microsoft.Azure.Common (>= 2.1.0 < 3.0)
+    Microsoft.WindowsAzure.Management.Scheduler (6.2.0)
+      Microsoft.Azure.Common (>= 2.0.4 < 3.0)
+    Microsoft.WindowsAzure.Management.ServiceBus (0.17.1-preview)
+      Microsoft.Azure.Common (>= 2.0.1 < 3.0)
+    Microsoft.WindowsAzure.Management.Sql (5.2.0)
+      Microsoft.Azure.Common (>= 2.0.4 < 3.0)
+    Microsoft.WindowsAzure.Management.Storage (5.1.1)
+      Microsoft.Azure.Common (>= 2.0.4 < 3.0)
+    Microsoft.WindowsAzure.Management.WebSites (4.0.0)
+      Microsoft.WindowsAzure.Common (>= 1.3.0 < 2.0)
+    Mono.Cecil (0.9.6.1)
+    Newtonsoft.Json (7.0.1)
+    Octokit (0.16.0)
       Microsoft.Net.Http
-    SourceLink.Fake (1.0.0)
+    System.Spatial (5.7.0) - framework: >= net40, winv4.5, wpv8.1, wpv8.0
+    Vagabond (0.12.2)
+      FsPickler (>= 1.6.1 < 1.7.0)
+      Mono.Cecil (>= 0.9.6.1 < 0.9.7.0)
+    WindowsAzure.ServiceBus (2.5.4)
+      Microsoft.WindowsAzure.ConfigurationManager
+    WindowsAzure.Storage (4.3.0)
+      Microsoft.Data.OData (>= 5.6.2) - framework: >= net40, winv4.5, wpv8.1, wpv8.0
+      Microsoft.Data.Services.Client (>= 5.6.2) - framework: >= net40
+      Microsoft.WindowsAzure.ConfigurationManager (>= 1.8.0.0) - framework: >= net40
+      Newtonsoft.Json (>= 5.0.8) - framework: >= net40, wpv8.0
 GITHUB
   remote: fsharp/FAKE
   specs:
-    modules/Octokit/Octokit.fsx (76860b263d113e9a127c538ecf146e4ce35c4c27)
+    modules/Octokit/Octokit.fsx (917a86046700e4eaaa2aa09de7895e048eaaa1b1)
       Octokit

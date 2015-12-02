@@ -1,9 +1,9 @@
 ﻿namespace System
 open System.Reflection
 
-[<assembly: AssemblyTitleAttribute("FSharp.ProjectTemplate")>]
-[<assembly: AssemblyProductAttribute("FSharp.ProjectTemplate")>]
-[<assembly: AssemblyDescriptionAttribute("A short summary of your project.")>]
+[<assembly: AssemblyTitleAttribute("MBrace.ProgFSharp")>]
+[<assembly: AssemblyProductAttribute("MBrace.ProgFSharp")>]
+[<assembly: AssemblyDescriptionAttribute("MBrace tutorial for ProgFSharp 2015")>]
 [<assembly: AssemblyVersionAttribute("1.0")>]
 [<assembly: AssemblyFileVersionAttribute("1.0")>]
 do ()
