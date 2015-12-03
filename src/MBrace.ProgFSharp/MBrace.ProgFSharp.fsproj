@@ -44,10 +44,11 @@
     <Reference Include="System.Numerics" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="chapter-1-provision-cluster.fsx" />
-    <None Include="paket.references" />
     <None Include="utils\utils.fsx" />
     <None Include="utils\config.fsx" />
+    <None Include="utils\admin.fsx" />
+    <None Include="chapter-1-provision-cluster.fsx" />
+    <None Include="paket.references" />
   </ItemGroup>
   <PropertyGroup>
     <MinimumVisualStudioVersion Condition="'$(MinimumVisualStudioVersion)' == ''">11</MinimumVisualStudioVersion>

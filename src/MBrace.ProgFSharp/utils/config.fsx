@@ -32,6 +32,9 @@ module Config =
     // Your prefered cluster count
     let vmCount = 4
 
+    /// Optional cluster configuration for non-provisioned clusters
+    let configuration = None : Configuration option
+
     /// Gets the already existing deployment
     let GetDeployment() = Deployment.GetDeployment(pubSettingsFile, serviceName = clusterName, ?subscriptionId = subscriptionId) 
 
@@ -51,8 +54,12 @@ module Config =
 
     /// Connect to the cluster 
     let GetCluster() = 
-        let deployment = GetDeployment()
-        AzureCluster.Connect(deployment, logger = ConsoleLogger(true), logLevel = LogLevel.Info)
+        let config =
+            match configuration with
+            | None -> GetDeployment().Configuration
+            | Some cfg -> cfg
+
+        AzureCluster.Connect(config, logger = ConsoleLogger(true), logLevel = LogLevel.Info)
 
     /// Updates the current config file with supplied parameters
     let UpdateConfig(pubSettingsPath : string, subscriptionId : string option, clusterName : string, region : Region, vmSize : VMSize, vmCount : int) =
