@@ -48,7 +48,9 @@
     <None Include="utils\config.fsx" />
     <None Include="utils\admin.fsx" />
     <None Include="chapter-1-provision-cluster.fsx" />
+    <None Include="cloud-parallel-data-flow.fsx" />
     <None Include="paket.references" />
+    <None Include="lib\sieve.fsx" />
   </ItemGroup>
   <PropertyGroup>
     <MinimumVisualStudioVersion Condition="'$(MinimumVisualStudioVersion)' == ''">11</MinimumVisualStudioVersion>
