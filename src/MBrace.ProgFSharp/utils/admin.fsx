@@ -24,7 +24,7 @@ type CredentialMailDistributor private (sender : string, smtp : ThreadLocal<Smtp
         mail.Body <- body
         client.Send mail
 
-    do send sender "Credential mail distributor notification" "Test."
+    do send sender "Credential mail distributor notification" "This is a notification that the progfsharp credential mail distributor has been activated."
 
     member __.SendCredentials(recipient : string, deployment : Deployment) =
         let title = "Your mbrace credentials for Progressive F# Tutorials 2015"
@@ -82,8 +82,8 @@ let adminEmail : string = (!?)
 // administrator password
 let adminPasswd : string = (!?)
 
-let clusterSize = 6
-let vmSize = VMSize.A2
+let clusterSize = 4
+let vmSize = VMSize.A3
 let region = Region.North_Europe
 
 /// subscription manager
@@ -93,5 +93,5 @@ let credMail = CredentialMailDistributor.Create(adminEmail, adminPasswd)
 
 /// provision cluster for supplied email address
 let provisionForEmailAddressAsync(emailAddress : string) =
-    let d = manager.Provision(clusterSize, vmSize = vmSize, serviceLabel = emailAddress, reuseAccounts = false)
+    let d = manager.Provision(clusterSize, vmSize = vmSize, clusterLabel = emailAddress, reuseAccounts = false)
     Async.StartAsTask(async { let! _ = d.AwaitProvisionAsync() in return (credMail.SendCredentials(emailAddress, d); d) })

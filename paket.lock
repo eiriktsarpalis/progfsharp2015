@@ -14,7 +14,7 @@ NUGET
       Microsoft.Bcl.Build (>= 1.0.14) - framework: portable-net403+win+wpa81
       Microsoft.Net.Http (>= 2.2.22) - framework: portable-net403+win+wpa81
       Newtonsoft.Json (>= 6.0.4) - framework: portable-net403+win+wpa81
-    MBrace.Azure (1.1.8)
+    MBrace.Azure (1.1.9)
       Argu (>= 1.0.0 < 2.0.0)
       FsPickler (>= 1.6.2)
       FsPickler.Json (>= 1.6.2)
@@ -24,8 +24,8 @@ NUGET
       Vagabond (>= 0.12.2)
       WindowsAzure.ServiceBus (>= 2.5.2 < 2.6.0)
       WindowsAzure.Storage (>= 4.3.0 < 4.4.0)
-    MBrace.Azure.Management (1.1.8)
-      MBrace.Azure (>= 1.1.8)
+    MBrace.Azure.Management (1.1.9)
+      MBrace.Azure (>= 1.1.9)
       MBrace.Core (>= 1.0.3 < 1.1.0)
       MBrace.Runtime (>= 1.0.3 < 1.1.0)
       Microsoft.Bcl.Async
