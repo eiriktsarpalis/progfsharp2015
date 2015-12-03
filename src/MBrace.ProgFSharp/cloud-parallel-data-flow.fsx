@@ -24,31 +24,19 @@ parallel data flow tasks.  This model is similar to Hadoop and Spark.
  
 CloudFlow.ofArray partitions the input array based on the number of 
 available workers.  The parts of the array are then fed into cloud tasks
-implementing the map and filter stages.  The final 'countBy' stage is
-implemented by a final cloud task. 
+implementing the map and filter stages.  
 *)
 
-let inputs = [| 1..100 |]
+let inputs = [|1..1000|]
 
-let streamComputationTask = 
+// Task 1: Find the sum of all the multiples of 3 or 5 below 1000.
+let multiples = 
     inputs
     |> CloudFlow.OfArray
-    |> CloudFlow.map (fun num -> num * num)
-    |> CloudFlow.map (fun num -> num % 10)
-    |> CloudFlow.countBy id
-    |> CloudFlow.toArray
-    |> cluster.CreateProcess
+    |> CloudFlow.filter (fun num -> (!?))
+    |> CloudFlow.sum
+    |> cluster.Run
 
-(**
-Next, check the progress of your job.
-
-> Note: the number of cloud tasks involved, which should be the number of workers * 2.  This indicates
-> the input array has been partitioned and the work carried out in a distributed way.
-*)
-streamComputationTask.ShowInfo()
-
-(** Next, await the result *)
-streamComputationTask.Result
 
 (** 
 
@@ -71,7 +59,9 @@ let computePrimesTask =
     |> CloudFlow.OfArray
     |> CloudFlow.withDegreeOfParallelism 6
     |> CloudFlow.map (fun n -> Sieve.getPrimes n)
-    |> CloudFlow.map (fun primes -> sprintf "calculated %d primes: %A" primes.Length primes)
+    // Task 2: Collect only twin primes (A twin prime is a prime number that has a prime gap of two)
+    |> CloudFlow.filter (fun primes -> (!?)) 
+    |> CloudFlow.map (fun primes -> sprintf "calculated %d twin primes: %A" primes.Length primes)
     |> CloudFlow.toArray
     |> cluster.CreateProcess 
 
