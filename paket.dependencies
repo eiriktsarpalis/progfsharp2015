@@ -1,7 +1,7 @@
 source https://nuget.org/api/v2
 
 nuget FAKE
-nuget MBrace.Azure 1.1.8
+nuget MBrace.Azure 1.1.9
 nuget MBrace.Azure.Management
 
 github fsharp/FAKE modules/Octokit/Octokit.fsx
