@@ -17,7 +17,7 @@ From Async to Cloud (Progressive F# Tutorials 2015 London)
 
 In this tutorial you will learn the basics of the MBrace programming model.
 Follow the instructions and complete the assignments described below.
-Once done, you should have learned how to submit simple computations to the cloud
+Once done, you should have learned how to submit simple computations to the cloud.
 
 
 ////////////////////////
