@@ -8,7 +8,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".paket", ".paket", "{63297B
 		paket.lock = paket.lock
 	EndProjectSection
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "MBrace.ProgFSharp", "src\MBrace.ProgFSharp\MBrace.ProgFSharp.fsproj", "{AEAA21BA-EAB4-4E81-8327-0D09C0FA315E}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "MBrace.Progfsharp", "src\MBrace.ProgFSharp\MBrace.Progfsharp.fsproj", "{AEAA21BA-EAB4-4E81-8327-0D09C0FA315E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "project", "project", "{BF60BC93-E09B-4E5F-9D85-95A519479D54}"
 	ProjectSection(SolutionItems) = preProject
