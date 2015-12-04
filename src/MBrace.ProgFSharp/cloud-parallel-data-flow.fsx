@@ -54,13 +54,14 @@ of partitioning of the stream at any point in the pipeline.
 *)
 let numbers = [| for i in 1 .. 30 -> 50000000 |]
 
+// Task 2: Collect only twin primes (A twin prime is a prime number that has a prime gap of two)
+let twinPrimes (primes : int[]) : int[] = (!?)
 let computePrimesTask = 
     numbers
     |> CloudFlow.OfArray
     |> CloudFlow.withDegreeOfParallelism 6
     |> CloudFlow.map (fun n -> Sieve.getPrimes n)
-    // Task 2: Collect only twin primes (A twin prime is a prime number that has a prime gap of two)
-    |> CloudFlow.filter (fun primes -> (!?)) 
+    |> CloudFlow.map (fun primes -> twinPrimes primes) 
     |> CloudFlow.map (fun primes -> sprintf "calculated %d twin primes: %A" primes.Length primes)
     |> CloudFlow.toArray
     |> cluster.CreateProcess 
