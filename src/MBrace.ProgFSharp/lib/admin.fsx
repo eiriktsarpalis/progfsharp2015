@@ -1,4 +1,5 @@
-﻿#load "utils.fsx"
+﻿#load "../config.fsx"
+#load "utils.fsx"
 #load "../../../packages/MBrace.Azure/MBrace.Azure.fsx"
 #load "../../../packages/MBrace.Azure.Management/MBrace.Azure.Management.fsx"
 
@@ -68,30 +69,18 @@ Cheers!
         new CredentialMailDistributor(sender, new ThreadLocal<_>(mkClient))
 
 
-// You can download your publication settings file at 
-//     https://manage.windowsazure.com/publishsettings
-let pubSettingsFile : string = (!?)
-
-// If your publication settings defines more than one subscription,
-// you will need to specify which one you will be using here.
-let subscriptionId : string option = (!?)
-
 // administrator email
 let adminEmail : string = (!?)
 
 // administrator password
 let adminPasswd : string = (!?)
 
-let clusterSize = 4
-let vmSize = VMSize.A3
-let region = Region.North_Europe
-
 /// subscription manager
-let manager = SubscriptionManager.FromPublishSettingsFile(pubSettingsFile, defaultRegion = region, logger = new ConsoleLogger(), ?subscriptionId = subscriptionId)
+let manager = SubscriptionManager.FromPublishSettingsFile(Config.pubSettingsFile, defaultRegion = Config.region, logger = new ConsoleLogger(), ?subscriptionId = Config.subscriptionId)
 /// credential mail distributor
 let credMail = CredentialMailDistributor.Create(adminEmail, adminPasswd)
 
 /// provision cluster for supplied email address
 let provisionForEmailAddressAsync(emailAddress : string) =
-    let d = manager.Provision(clusterSize, vmSize = vmSize, clusterLabel = emailAddress, reuseAccounts = false)
+    let d = manager.Provision(Config.vmCount, vmSize = Config.vmSize, clusterLabel = emailAddress, reuseAccounts = false)
     Async.StartAsTask(async { let! _ = d.AwaitProvisionAsync() in return (credMail.SendCredentials(emailAddress, d); d) })

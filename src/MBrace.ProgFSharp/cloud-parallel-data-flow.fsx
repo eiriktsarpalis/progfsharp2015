@@ -1,7 +1,7 @@
 ﻿
 (*** hide ***)
-#load "utils/utils.fsx"
-#load "utils/config.fsx"
+#load "config.fsx"
+#load "lib/utils.fsx"
 #load "lib/sieve.fsx"
 
 

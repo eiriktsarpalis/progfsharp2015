@@ -1,5 +1,5 @@
-﻿#load "utils/utils.fsx"
-#load "utils/config.fsx"
+﻿#load "config.fsx"
+#load "lib/utils.fsx"
 
 open MBrace.Azure
 open MBrace.Azure.Management
