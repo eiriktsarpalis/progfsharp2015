@@ -51,6 +51,7 @@
     <None Include="config.fsx" />
     <None Include="Chapter 1\provision-cluster.fsx" />
     <None Include="cloud-parallel-data-flow.fsx" />
+    <None Include="gotchas.fsx" />
   </ItemGroup>
   <PropertyGroup>
     <MinimumVisualStudioVersion Condition="'$(MinimumVisualStudioVersion)' == ''">11</MinimumVisualStudioVersion>
