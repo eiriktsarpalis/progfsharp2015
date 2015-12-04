@@ -44,13 +44,13 @@
     <Reference Include="System.Numerics" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="chapter-1-provision-cluster.fsx" />
-    <None Include="cloud-parallel-data-flow.fsx" />
-    <None Include="paket.references" />
-    <None Include="config.fsx" />
     <None Include="lib\sieve.fsx" />
     <None Include="lib\utils.fsx" />
     <None Include="lib\admin.fsx" />
+    <None Include="lib\dashboard.fsx" />
+    <None Include="config.fsx" />
+    <None Include="Chapter 1\provision-cluster.fsx" />
+    <None Include="cloud-parallel-data-flow.fsx" />
   </ItemGroup>
   <PropertyGroup>
     <MinimumVisualStudioVersion Condition="'$(MinimumVisualStudioVersion)' == ''">11</MinimumVisualStudioVersion>

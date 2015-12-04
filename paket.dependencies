@@ -4,5 +4,5 @@ nuget FAKE
 nuget MBrace.Azure 1.1.9
 nuget MBrace.Azure.Management
 nuget MBrace.Flow
-
-github fsharp/FAKE modules/Octokit/Octokit.fsx
+nuget FSharp.Charting
+github fslaborg/FSharp.Charting docs/content/EventEx-0.1.fsx
