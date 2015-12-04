@@ -59,7 +59,7 @@ publish settings files in the following assignment:
 
 *)
 
-let pubSettingsPath : string = (!?)
+let pubSettingsPath : string = __IMPLEMENT_ME__
 
 (**
 
@@ -68,7 +68,7 @@ you will need to specify which one you will be using here.
 
 *)
 
-let subscriptionId : string option = (!?)
+let subscriptionId : string option = __IMPLEMENT_ME__
 
 (**
 
@@ -81,7 +81,7 @@ Valid name examples include 'eirikcluster', 'isaacmbrace2' and 'mbracedon42'
 
 *)
 
-let clusterName : string = (!?)
+let clusterName : string = __IMPLEMENT_ME__
 
 (*
 
@@ -91,7 +91,7 @@ The recommended region for this tutorial is North Europe (Netherlands).
 
 *)
 
-let region : Region = (!?)
+let region : Region = __IMPLEMENT_ME__
 
 (*
 
@@ -100,8 +100,8 @@ For this tutorial, let's create a cluster of 4 VMs of size 'A3' (quad core, 7GB 
 
 *)
 
-let vmSize : VMSize = (!?)
-let vmCount : int = (!?)
+let vmSize : VMSize = __IMPLEMENT_ME__
+let vmCount : int = __IMPLEMENT_ME__
 
 (**
 

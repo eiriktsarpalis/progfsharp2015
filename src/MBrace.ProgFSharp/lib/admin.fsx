@@ -70,10 +70,10 @@ Cheers!
 
 
 // administrator email
-let adminEmail : string = (!?)
+let adminEmail : string = __IMPLEMENT_ME__
 
 // administrator password
-let adminPasswd : string = (!?)
+let adminPasswd : string = __IMPLEMENT_ME__
 
 /// subscription manager
 let manager = SubscriptionManager.FromPublishSettingsFile(Config.pubSettingsFile, defaultRegion = Config.region, logger = new ConsoleLogger(), ?subscriptionId = Config.subscriptionId)
