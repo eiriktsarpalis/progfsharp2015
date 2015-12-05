@@ -1,7 +1,7 @@
-﻿#I ".."
-#load "config.fsx"
-#load "lib/utils.fsx"
-#load "lib/dashboard.fsx"
+﻿#load "../config.fsx"
+#load "../lib/utils.fsx"
+#load "../lib/dashboard.fsx"
+//#load "../lib/thespian.fsx"
 
 open System
 open MBrace.Core
@@ -13,7 +13,7 @@ open Dashboard
 From Async to Cloud (Progressive F# Tutorials 2015 London)
 ==========================================================
 
-# Chapter 2: Introduction to Cloud workflows
+# Chapter 1: Introduction to Cloud workflows
 
 In this tutorial you will learn the basics of the MBrace programming model.
 Follow the instructions and complete the assignments described below.
@@ -183,4 +183,4 @@ We can see a history of all executed computations in our cluster by calling
 
 cluster.ShowProcesses()
 
-(* YOU HANE NOW COMPLETED CHAPTER 2 *)
+(* YOU HANE NOW COMPLETED CHAPTER 1 *)

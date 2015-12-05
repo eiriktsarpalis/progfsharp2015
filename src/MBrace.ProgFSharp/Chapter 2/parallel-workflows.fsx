@@ -1,7 +1,7 @@
-﻿#I ".."
-#load "config.fsx"
-#load "lib/utils.fsx"
-#load "lib/dashboard.fsx"
+﻿#load "../config.fsx"
+#load "../lib/utils.fsx"
+#load "../lib/dashboard.fsx"
+//#load "../lib/thespian.fsx"
 
 open System
 open MBrace.Core
@@ -15,7 +15,7 @@ let cluster = Config.GetCluster()
 From Async to Cloud (Progressive F# Tutorials 2015 London)
 ==========================================================
 
-# Chapter 3: Parallel workflows
+# Chapter 2: Parallel workflows
 
 In this tutorial you will learn how mbrace can be used to define parallel and distributed computation.
 Follow the instructions and complete the assignments described below.
@@ -95,7 +95,7 @@ to complete succesfully.
 
 /// download text from given http uri
 let downloadText (uri : string) = cloud {
-    return! Cloud.OfAsync <| (new WebClient()).AsyncDownloadString(Uri uri)
+    return! Cloud.OfAsync <| (new System.Net.WebClient()).AsyncDownloadString(Uri uri)
 }
 
 /// benchmark the sequentual download of the same uri 100 times
@@ -123,4 +123,4 @@ let getFastest () = cloud {
 
 getFastest() |> cluster.Run
 
-(* YOU HANE NOW COMPLETED CHAPTER 3 *)
+(* YOU HANE NOW COMPLETED CHAPTER 2 *)

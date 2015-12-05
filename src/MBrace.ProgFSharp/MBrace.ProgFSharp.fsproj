@@ -50,10 +50,10 @@
     <None Include="lib\dashboard.fsx" />
     <None Include="lib\thespian.fsx" />
     <None Include="config.fsx" />
-    <None Include="Chapter 1\provision-cluster.fsx" />
-    <None Include="Chapter 2\cloud-introduction.fsx" />
-    <None Include="Chapter 3\parallel-workflows.fsx" />
+    <None Include="Chapter 0\provision-cluster.fsx" />
     <None Include="gotchas.fsx" />
+    <None Include="Chapter 1\cloud-introduction.fsx" />
+    <None Include="Chapter 2\parallel-workflows.fsx" />
   </ItemGroup>
   <PropertyGroup>
     <MinimumVisualStudioVersion Condition="'$(MinimumVisualStudioVersion)' == ''">11</MinimumVisualStudioVersion>

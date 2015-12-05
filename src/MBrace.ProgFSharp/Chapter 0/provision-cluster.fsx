@@ -1,7 +1,7 @@
-﻿#I ".."
-#load "config.fsx"
-#load "lib/utils.fsx"
-#load "lib/dashboard.fsx"
+﻿#load "../config.fsx"
+#load "../lib/utils.fsx"
+#load "../lib/dashboard.fsx"
+//#load "../lib/thespian.fsx"
 
 open MBrace.Azure
 open MBrace.Azure.Management
@@ -12,7 +12,7 @@ open Dashboard
 From Async to Cloud (Progressive F# Tutorials 2015 London)
 ==========================================================
 
-# Chapter 1: Provisioning an MBrace cluster on Azure
+# Chapter 0: Provisioning an MBrace cluster on Azure
 
 In this tutorial you will learn how you can deploy an MBrace cluster using Azure.
 Follow the instructions and complete the assignments described below.
@@ -121,7 +121,7 @@ First, let's reload 'config.fsx' with our updated preferences.
 
 *)
 
-#load "config.fsx"
+#load "../config.fsx"
 
 (**
 
@@ -161,4 +161,4 @@ Let's verify that it's properly populated by viewing its listed workers.
 cluster.ShowWorkers()
 
 
-(* YOU HANE NOW COMPLETED CHAPTER 1 *)
+(* YOU HANE NOW COMPLETED CHAPTER 0 *)
