@@ -37,7 +37,7 @@ cloud { return Environment.MachineName } |> cluster.RunLocally  // remote execut
 
 (*
 
-As demonstrated above, local versus remote execution comes with minute difference w.r.t.
+As demonstrated above, local versus remote execution comes with minute differences w.r.t.
 to the computed result as well as observed side-effects.
 
 Let's try a simple example. Just by looking at the example below, 
