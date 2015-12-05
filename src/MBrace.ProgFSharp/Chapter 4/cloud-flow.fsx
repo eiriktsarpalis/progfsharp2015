@@ -20,8 +20,8 @@ From Async to Cloud (Progressive F# Tutorials 2015 London)
 In this tutorial you will learn how you can use the MBrace.Flow library to perform cloud analytics.
 Follow the instructions and complete the assignments described below.
 
-///////////////////////////////////
-// Task 1: The MBrace.Flow Library
+//////////////////////////////////////
+// Section 1: The MBrace.Flow Library
 
 MBrace.Flow is a library built on top of the MBrace core primitives we have explored earlier.
 It provides APIs for performing distributed computation using LINQ-style functional pipelines.
@@ -115,8 +115,8 @@ utilising as efficiently as possible all resources available to it.
 
 
 
-////////////////////////////////
-// Task 2: House Sale Analytics
+///////////////////////////////////
+// Section 2: House Sale Analytics
 
 Let's move on to a more interesting example. 
 We'll be using CloudFlow and the CSV type provider to perform analytics on the UK land registry public data.
@@ -179,8 +179,8 @@ of comma separated values to a strongly typed row based on the provided sample.
 We then use the parsed data to determine which months registered the highest sale prices, on average.
 
 
-///////////////////////////////
-// Task 3: Caching Cloud flows
+//////////////////////////////////
+// Section 3: Caching Cloud flows
 
 It should be pointed out that in the above workflows, 
 the data set is being downloaded from the public server every time we send in a new computation.
@@ -230,8 +230,8 @@ cachedFlow
 
 (*
 
-////////////////////////////////////
-// Task 4: Writing your own Queries
+///////////////////////////////////////
+// Section 4: Writing your own Queries
 
 In this assignment, we will be giving natural language descriptions
 of what house data information needs to be extracted and you will have

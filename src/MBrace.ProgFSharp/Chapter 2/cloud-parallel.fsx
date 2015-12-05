@@ -21,8 +21,8 @@ In this tutorial you will learn how mbrace can be used to define parallel and di
 Follow the instructions and complete the assignments described below.
 
 
-////////////////////////////////
-// Task 1: Using Cloud.Parallel
+///////////////////////////////////
+// Section 1: Using Cloud.Parallel
 
 Distribution in MBrace can be achieved through the use of primitive combinators.
 The simplest distribution primitive is Cloud.Parallel; like Async.Parallel, it
@@ -58,8 +58,8 @@ let lineCountProc : CloudProcess<int> = __IMPLEMENT_ME__ // run "getLineCount" w
 
 (* 
 
-/////////////////////////////////////////
-// Task 2: Using Cloud.ParallelEverywhere
+/////////////////////////////////////////////
+// Section 2: Using Cloud.ParallelEverywhere
 
 Let's try something different. In this example we will be using Cloud.ParallelEverywhere,
 a library combinator that takes a single cloud computation and executes it across the cluster,
@@ -85,8 +85,8 @@ getClusterWorkerInfo() |> cluster.Run
 
 (*
 
-///////////////////////////////////////////
-// Task 3: Spawning nested Cloud Processes
+//////////////////////////////////////////////
+// Section 3: Spawning nested Cloud Processes
 
 It is possible to fork cloud computations as separate cloud processes
 in an already running cloud process using the Cloud.CreateProcess() primitive.

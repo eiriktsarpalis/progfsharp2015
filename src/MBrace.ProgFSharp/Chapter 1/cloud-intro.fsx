@@ -20,8 +20,8 @@ Follow the instructions and complete the assignments described below.
 Once done, you should have learned how to submit simple computations to the cloud.
 
 
-////////////////////////
-// Task 1: Hello, World
+///////////////////////////
+// Section 1: Hello, World
 
 Cloud workflows are the unit of computation in MBrace.
 They define delayed, modular and language-integrated computations
@@ -54,8 +54,8 @@ cluster.Run __IMPLEMENT_ME__
 
 (*
 
-////////////////////////////////////////////////
-// Task 2: Remotely executing a simple function
+///////////////////////////////////////////////////
+// Section 2: Remotely executing a simple function
 
 Let's try something a bit less trivial.
 In this example we will be defining a simple
@@ -76,8 +76,8 @@ cluster.Run (cloud { return getPrimeCount __IMPLEMENT_ME__ })
 
 (*
 
-/////////////////////////////////////
-// Task 3: Composing cloud workflows
+////////////////////////////////////////
+// Section 3: Composing cloud workflows
 
 Just like async, cloud workflows can be composed using the let! keyword
 
@@ -118,8 +118,8 @@ map msg [1 .. 100] |> cluster.Run
 
 (*
 
-///////////////////////////
-// Task 4: Cloud Processes
+//////////////////////////////
+// Section 4: Cloud Processes
 
 cluster.Run() is a useful method for promptly submitting small snippets of code to the cloud,
 but it is usually the case that cloud computations are long-running and complicated.

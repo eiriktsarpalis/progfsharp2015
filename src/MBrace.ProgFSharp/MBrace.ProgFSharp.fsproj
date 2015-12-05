@@ -52,10 +52,10 @@
     <None Include="config.fsx" />
     <None Include="Chapter 0\provision-cluster.fsx" />
     <None Include="Chapter 4\cloud-flow.fsx" />
-    <None Include="gotchas.fsx" />
     <None Include="Chapter 1\cloud-intro.fsx" />
     <None Include="Chapter 2\cloud-parallel.fsx" />
     <None Include="Chapter 3\cloud-storage.fsx" />
+    <None Include="Chapter 5\cloud-gotchas.fsx" />
   </ItemGroup>
   <PropertyGroup>
     <MinimumVisualStudioVersion Condition="'$(MinimumVisualStudioVersion)' == ''">11</MinimumVisualStudioVersion>

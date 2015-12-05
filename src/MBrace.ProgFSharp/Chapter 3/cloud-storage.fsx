@@ -20,8 +20,8 @@ From Async to Cloud (Progressive F# Tutorials 2015 London)
 In this tutorial you will learn how you can interact with Azure storage using mbrace.
 Follow the instructions and complete the assignments described below.
 
-/////////////////////////////////////////
-// Task 1: Interacting with blob storage
+////////////////////////////////////////////
+// Section 1: Interacting with blob storage
 
 The cluster object comes with APIs for interacting with blob storage:
 
@@ -74,8 +74,8 @@ fileSystem.Directory.Delete("/mycontainer", recursiveDelete = true)
 
 (*
 
-///////////////////////////////////////////////
-// Task 2: Download http files to blob storage
+//////////////////////////////////////////////////
+// Section 2: Download http files to blob storage
 
 Let's now see how we can use mbrace to download files from the web
 to our blob storage account in parallel.
@@ -124,8 +124,8 @@ let downloadedFiles = downloadProc.Result // get the downloaded files
 
 (*
 
-/////////////////////////////////////////////////////////
-// Task 3: Performing wordcount on blob store text files
+////////////////////////////////////////////////////////////
+// Section 3: Performing wordcount on blob store text files
 
 Let's try to put our freshly downloaded files into use.
 We'll be performing a simple parallel wordcount operation.

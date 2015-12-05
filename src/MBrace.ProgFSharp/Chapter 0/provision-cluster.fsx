@@ -19,15 +19,15 @@ Follow the instructions and complete the assignments described below.
 Once done, you should have succesfully connected to your very own MBrace cluster running in the cloud!
 
 
-/////////////////////////////////////
-// Task 1: Create a Microsoft account
+/////////////////////////////////////////
+// Section 1: Create a Microsoft account
 
 In order to work with Azure, you will need to have access to a microsoft account.
 If you already have an account available, you can ignore this task.
 If not, visit https://login.live.com/ and *sign up* for a free account.
 
-////////////////////////////
-// Task 2: Sign up for Azure
+////////////////////////////////
+// Section 2: Sign up for Azure
 
 You are now ready to sign up for an Azure subscription.
 Microsoft offers a free trial to every new user.
@@ -39,8 +39,8 @@ If for whatever reason you are unable to obtain an azure subscription of your ow
 please contact any of the speakers, so they can provision an mbrace cluster for you.
 
 
-////////////////////////////////////////////////////
-// Task 3: Obtaining your Azure PublishSettings file
+////////////////////////////////////////////////////////
+// Section 3: Obtaining your Azure PublishSettings file
 
 Now that you have successfully created your own Azure subscription,
 you can proceed with downloading the publication settings file
@@ -72,8 +72,8 @@ let subscriptionId : string option = __IMPLEMENT_ME__
 
 (**
 
-/////////////////////////////////////////////
-// Task 4: Choosing a cluster name and region
+/////////////////////////////////////////////////
+// Section 4: Choosing a cluster name and region
 
 Let's now choose a name for your cluster.
 Your cluster name must be unique to azure and be a valid DNS prefix name.
@@ -113,8 +113,8 @@ Config.UpdateConfig(pubSettingsPath, subscriptionId, clusterName, region, vmSize
 
 (*
 
-///////////////////////////////////
-// Task 5: Provisioning our cluster
+///////////////////////////////////////
+// Section 5: Provisioning our cluster
 
 We are now ready to start provisioning our cluster.
 First, let's reload 'config.fsx' with our updated preferences.
@@ -143,8 +143,8 @@ deployment.OpenDashboard()
 
 (*
 
-////////////////////////////////////////////////
-// Task 6: Connecting to our provisioned cluster
+////////////////////////////////////////////////////
+// Section 6: Connecting to our provisioned cluster
 
 Once provisioning has completed, we can proceed connecting to our MBrace cluster.
 
