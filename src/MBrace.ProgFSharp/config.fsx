@@ -1,5 +1,6 @@
 ﻿#load "../../packages/MBrace.Azure/MBrace.Azure.fsx"
 #load "../../packages/MBrace.Azure.Management/MBrace.Azure.Management.fsx"
+#r "../../packages/Streams/lib/net45/Streams.dll"
 #r "../../packages/MBrace.Flow/lib/net45/MBrace.Flow.dll"
  
 namespace global
