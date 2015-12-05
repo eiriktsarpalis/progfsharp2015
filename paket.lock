@@ -5,6 +5,8 @@ NUGET
     FAKE (4.10.3)
     FSharp.Charting (0.90.13)
     FSharp.Core (4.0.0.1)
+    FSharp.Data (2.2.5)
+      Zlib.Portable (>= 1.10.0) - framework: portable-net40+sl50+wp80+win80
     FsPickler (1.6.2)
     FsPickler.Json (1.6.2)
       FsPickler (1.6.2)
@@ -130,6 +132,7 @@ NUGET
       Microsoft.Data.Services.Client (>= 5.6.2) - framework: >= net40
       Microsoft.WindowsAzure.ConfigurationManager (>= 1.8.0.0) - framework: >= net40
       Newtonsoft.Json (>= 5.0.8) - framework: >= net40, wpv8.0
+    Zlib.Portable (1.11.0) - framework: portable-net40+sl50+wp80+win80
 GITHUB
   remote: fslaborg/FSharp.Charting
   specs:

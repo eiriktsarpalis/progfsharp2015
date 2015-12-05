@@ -6,4 +6,5 @@ nuget MBrace.Azure.Management
 nuget MBrace.Flow
 nuget MBrace.Thespian
 nuget FSharp.Charting
+nuget FSharp.Data ~> 2.0
 github fslaborg/FSharp.Charting docs/content/EventEx-0.1.fsx
