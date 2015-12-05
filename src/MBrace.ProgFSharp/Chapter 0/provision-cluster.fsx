@@ -160,5 +160,13 @@ Let's verify that it's properly populated by viewing its listed workers.
 
 cluster.ShowWorkers()
 
+(*
+
+We can also open a dashboard that displays information on the cluster.
+
+*)
+
+cluster.OpenDashboard()
+
 
 (* YOU HANE NOW COMPLETED CHAPTER 0 *)
