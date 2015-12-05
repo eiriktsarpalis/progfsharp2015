@@ -48,6 +48,7 @@
     <None Include="lib\utils.fsx" />
     <None Include="lib\admin.fsx" />
     <None Include="lib\dashboard.fsx" />
+    <None Include="lib\thespian.fsx" />
     <None Include="config.fsx" />
     <None Include="Chapter 1\provision-cluster.fsx" />
     <None Include="Chapter 2\cloud-introduction.fsx" />
