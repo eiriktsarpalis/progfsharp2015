@@ -53,7 +53,8 @@
     <None Include="Chapter 0\provision-cluster.fsx" />
     <None Include="gotchas.fsx" />
     <None Include="Chapter 1\cloud-introduction.fsx" />
-    <None Include="Chapter 2\parallel-workflows.fsx" />
+    <None Include="Chapter 2\cloud-parallel.fsx" />
+    <None Include="Chapter 3\cloud-storage.fsx" />
   </ItemGroup>
   <PropertyGroup>
     <MinimumVisualStudioVersion Condition="'$(MinimumVisualStudioVersion)' == ''">11</MinimumVisualStudioVersion>

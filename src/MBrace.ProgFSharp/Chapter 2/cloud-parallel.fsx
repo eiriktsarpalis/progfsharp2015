@@ -54,7 +54,7 @@ let getLineCount (uris : string list) : Cloud<int> = cloud {
 /// Input http uris
 let pages = ["http://bing.com"; "http://yahoo.com" ; "http://google.com" ; "http://msn.com" ]
 
-let lineCountProc = cluster.CreateProcess(getLineCount pages)
+let lineCountProc : CloudProcess<int> = __IMPLEMENT_ME__ // run "getLineCount" with "pages" as input in the cloud
 
 (* 
 
@@ -67,16 +67,20 @@ precisely once on each target machine. We will be using that to get a list of al
 
 *)
 
+/// A custom record containing information on a specific worker in the cluster
 type Worker = { HostName : string ; CoreCount : int ; Is64Bit : bool }
 
+/// populates a record relevant to the current machine
 let getCurrentWorkerInfo() =
     { HostName = Environment.MachineName ; CoreCount = Environment.ProcessorCount ; Is64Bit = Environment.Is64BitProcess }
 
+/// a cloud workflow that fetches worker records for all machines in the cluster
 let getClusterWorkerInfo () : Cloud<Worker []> = cloud {
     let! info = Cloud.ParallelEverywhere( __IMPLEMENT_ME__ )
     return info
 }
 
+// run the computation in the cloud
 getClusterWorkerInfo() |> cluster.Run
 
 (*
@@ -87,7 +91,7 @@ getClusterWorkerInfo() |> cluster.Run
 It is possible to fork cloud computations as separate cloud processes
 in an already running cloud process using the Cloud.CreateProcess() primitive.
 
-In this example, we want to run a simple benchmark on google and bing:
+In this example, we want to run a simple 'benchmark' on google and bing:
 for each site we download the home page 100 times and return the first
 to complete succesfully.
 
@@ -110,8 +114,8 @@ let download100 (uri : string) : Cloud<string * TimeSpan> = cloud {
 }
 
 /// test which of google or bing is fastest to serve front page 100 times
-let getFastest () = cloud {
-    let! cts = Cloud.CreateCancellationTokenSource() // create a cancellation token for our computation
+let getFastest () : Cloud<string * TimeSpan> = cloud {
+    let! cts = Cloud.CreateCancellationTokenSource() // create a new cloud cancellation token
     try
         let! googleProc = Cloud.CreateProcess(download100 "http://google.com/", cancellationToken = cts.Token) // fork google worker
         let! bingProc = Cloud.CreateProcess(download100 "http://bing.com/", cancellationToken = cts.Token) // fork bing worker
@@ -121,6 +125,6 @@ let getFastest () = cloud {
         cts.Cancel() // ensure any leftover cloud processes are cancelled once complete
 }
 
-getFastest() |> cluster.Run
+let fastest : string * TimeSpan = __IMPLEMENT_ME__ // run the computation in the cloud
 
 (* YOU HANE NOW COMPLETED CHAPTER 2 *)
