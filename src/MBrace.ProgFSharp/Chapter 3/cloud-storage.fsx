@@ -93,7 +93,7 @@ let downloadText (uri : string) = cloud {
 /// our source uri which contains links to all the text files
 let sourceUri = "http://textfiles.com/etext/AUTHORS/ARISTOTLE/"
 /// Regex for locating text hyperlinks
-let hrefRegex = new Regex("href=\"([^\"]\.txt)\"", RegexOptions.IgnoreCase ||| RegexOptions.Compiled)
+let hrefRegex = new Regex("href=\"([^\"]*\.txt)\"", RegexOptions.IgnoreCase ||| RegexOptions.Compiled)
 
 let download() = cloud {
     let! (sourceText : string) = __IMPLEMENT_ME__ // download all html from source uri
@@ -138,7 +138,7 @@ type WordCount = WordFrequency []
 /// compute wordcount of given text body
 let computeWordCount (text : string) : WordCount =
     let words = text.Split([|' '; '\n' ; '.' ; ',' ; ':' ; ';' ; '\"'|])
-    words |> Seq.filter (fun w -> w.Length > 3) 
+    words |> Seq.filter (fun w -> w.Length > 4) 
           |> Seq.map (fun w -> w.ToLower()) 
           |> Seq.countBy id
           |> Seq.toArray
@@ -165,6 +165,6 @@ let computeWordCountCloud () : Cloud<WordCount> = cloud {
     return __IMPLEMENT_ME__ // take only the top 10 words by frequency
 }
 
-let wordCount : WordCount = __IMPLEMENT_ME__ // run the computation in the cluster
+let wordcountProc : CloudProcess<WordCount> = __IMPLEMENT_ME__ // run the computation in the cluster
 
 (* YOU HANE NOW COMPLETED CHAPTER 3 *)
