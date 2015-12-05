@@ -124,8 +124,8 @@ let downloadedFiles = downloadProc.Result // get the downloaded files
 
 (*
 
-/////////////////////////////////////////////////
-// Task 3: Performing wordcount on our text files
+/////////////////////////////////////////////////////////
+// Task 3: Performing wordcount on blob store text files
 
 Let's try to put our freshly downloaded files into use.
 We'll be performing a simple parallel wordcount operation.
