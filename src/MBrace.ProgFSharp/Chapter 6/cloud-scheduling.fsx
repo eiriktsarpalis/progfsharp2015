@@ -157,7 +157,8 @@ We are now ready to put all the pieces together and implement our improved Paral
 module Parallel2 =
     let map (f : 'T -> 'S) (inputs : 'T []) : 'S [] = 
         let partitionedInputs : 'T[][] = __IMPLEMENT_ME__ // partition inputs according to core count
-        Parallel1.map __IMPLEMENT_ME__ partitionedInputs // call the original parallel mapping operation on the partitioned inputs
+        let mappedPartitions : 'S[][] = Parallel1.map __IMPLEMENT_ME__ partitionedInputs // call the original parallel mapping operation on the partitioned inputs
+        Array.concat mappedPartitions
 
 (*
 
@@ -170,3 +171,132 @@ let inputs' = [|1 .. 10000000|]
 #time "on"
 inputs' |> Array.map (fun x -> x + 1)
 inputs' |> Parallel2.map (fun x -> x + 1)
+
+(*
+
+Which gives a much noticeable performance improvement. Can you think of ways this could be improved even more?
+
+
+///////////////////////////////////////////////////////
+// Section 3: WorkerRef's and targeted cloud processes
+
+MBrace comes with the concept of a 'WorkerRef'. As the name implies, it is a reference object to worker that participates in our MBrace cluster.
+To get a reference to the currently executing worker:
+
+*)
+
+cluster.Run (cloud { return! Cloud.CurrentWorker })
+
+(*
+
+Which will simply give back a reference to the worker that happened tou execute this job.
+
+To get references to *all* workers of our current cluster, we use
+
+*)
+
+cluster.Run (Cloud.GetAvailableWorkers())
+
+(*
+
+WorkerRefs can be used to direct computations for execution by a specific worker.
+For instance:
+
+*)
+
+let wref = cluster.Run Cloud.CurrentWorker
+let wref' = cluster.Run(Cloud.CurrentWorker, target = wref) // send a computation to the given worker ref
+
+wref = wref' // true
+
+(*
+
+This is a useful construct when needing to define self-scheduling cloud workflows and 
+when utilising worker worker-specific state such as caching.
+
+
+///////////////////////////////////////////////////////
+// Section 4: Implementing a Parallel.map using MBrace
+
+Let's now see how we can utilise the same techniques as before to implement a 
+distributed Parallel.map workflow using MBrace.
+
+Let's also define a function that gets the number of workers in our cluster
+
+*)
+
+let getWorkerCount() : Cloud<int> = cloud {
+    let! (workers : WorkerRef []) = __IMPLEMENT_ME__ // get all available workers in the cluster
+    return __IMPLEMENT_ME__ // return the total worker count
+}
+
+(*
+
+As before, we define a sequential map workflow:
+
+*)
+
+let seqMap (f : 'T -> 'S) (ts : 'T []) = cloud { return Array.map f ts }
+
+(*
+
+Let's now move to our parallel workflow implementation
+
+*)
+
+module Parallel3 =
+    let map (f : 'T -> 'S) (ts : 'T []) = cloud {
+        let! (workerCount:int) = __IMPLEMENT_ME__// get the current worker count
+        let chunks : 'T[][] = __IMPLEMENT_ME__ // use the provided 'Array.splitInto' to partition the inputs according to worker count
+        let! (mappedChunks : 'S[][]) = Cloud.Parallel [for ch in chunks -> cloud { return! __IMPLEMENT_ME__ } ] // perform a sequential map in each worker
+        return Array.concat mappedChunks
+    }
+
+
+(*
+
+Let's now test the implementation:
+
+*)
+
+cluster.Run(Parallel3.map (fun i -> i + 1) [|1 .. 1000000|])
+
+
+(*
+
+//////////////////////////////////////////////////
+// Section 5*: Improving Distributed Parallel.map
+
+This is an optional section in which you will be allowed to provide an
+improved implementation of Parallel.map
+
+i) Let's begin with the observation that workers are usually multicore machines.
+This can be verified by calling
+
+*)
+
+let worker = cluster.Run Cloud.CurrentWorker
+
+worker.ProcessorCount // processor count declared by worker
+
+(*
+
+This of course means running one sequential map operation in each worker job
+is far from optimal. Can you rewrite the implementation so that the 'seqMap' implementation
+is replaced with the multicore ready 'Parallel2.map' ?
+
+ii) It is not always the case that clusters are homogeneous w.r.t. processor count and CPU clock speed.
+We can use the WorkerRef instance to estimate a 'performance score' for each worker:
+
+*)
+
+let getPerformanceScore (worker : IWorkerRef) = worker.MaxCpuClock * float worker.ProcessorCount
+
+(*
+
+Can you create an implementation of Parallel3.map that performs a weighted partitioning of inputs
+based on each worker's performance score?
+
+*)
+
+(* YOU HANE NOW COMPLETED CHAPTER 5 *)
