@@ -68,17 +68,18 @@ Cheers!
 
         new CredentialMailDistributor(sender, new ThreadLocal<_>(mkClient))
 
-
-// administrator email
-let adminEmail : string = __IMPLEMENT_ME__
-
-// administrator password
-let adminPasswd : string = __IMPLEMENT_ME__
+/// Path to local file containting username/auth credentials for admin email
+let adminFile : string = __IMPLEMENT_ME__
 
 /// subscription manager
 let manager = SubscriptionManager.FromPublishSettingsFile(Config.pubSettingsFile, defaultRegion = Config.region, logger = new ConsoleLogger(), ?subscriptionId = Config.subscriptionId)
+
 /// credential mail distributor
-let credMail = CredentialMailDistributor.Create(adminEmail, adminPasswd)
+let credMail =
+    let contents = File.ReadAllText(adminFile).Split(',')
+    let email = contents.[0]
+    let auth  = contents.[1]
+    CredentialMailDistributor.Create(email, auth)
 
 /// provision cluster for supplied email address
 let provisionForEmailAddressAsync(emailAddress : string) =
