@@ -82,6 +82,13 @@ let credMail =
     CredentialMailDistributor.Create(email, auth)
 
 /// provision cluster for supplied email address
-let provisionForEmailAddressAsync(emailAddress : string) =
+let provisionForEmailAddress(emailAddress : string) =
     let d = manager.Provision(Config.vmCount, vmSize = Config.vmSize, clusterLabel = emailAddress, reuseAccounts = false)
-    Async.StartAsTask(async { let! _ = d.AwaitProvisionAsync() in return (credMail.SendCredentials(emailAddress, d); d) })
+    let _ = Async.StartAsTask(async { let! _ = d.AwaitProvisionAsync() in return (credMail.SendCredentials(emailAddress, d)) })
+    d
+
+/// delete cluster deployment
+let deleteDeployment(deployment : Deployment) = deployment.Delete(true, true)
+
+/// delete cluster deployment by name
+let deleteDeploymentByName(deploymentName : string) = manager.DeleteDeployment(deploymentName, true, true)
