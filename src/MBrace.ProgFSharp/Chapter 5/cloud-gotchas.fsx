@@ -66,8 +66,8 @@ Why does the error happen? Can you suggest a way the above could be fixed?
 
 
 
-////////////////////////////////////////////////
-// Section 2: Cloud workflows and serialization
+/////////////////////////////////////////////////
+// Section 2a: Cloud workflows and serialization
 
 It is often the case that our code relies on objects that are not serializable.
 But what happens when this code happens to be running in the cloud?
@@ -93,9 +93,51 @@ cluster.Run(downloader)
 Assingment: can you rewrite the snippet above so that it no longer fails?
 Tip: can you detect what segments of the code entail transition to a different machine?
 
+//////////////////////////////////////////////////
+// Section 2b : Cloud workflows and serialization
+
+Let us now consider the following type implementation:
+
+*)
+
+type Session() =
+    let cluster = cluster
+    let value = 41
+
+    member s.Increment() =
+        cluster.Run(cloud { return value + 1 })
+
+(*
+
+Can you predict what will happen if we run the following line?
+
+*)
+
+Session().Increment()
+
+(*
+
+Can you fix the problem only by changing the Increment() implementation?
+
+Now, let's try the following example:
+
+*)
+
+module Session2 =
+    let cluster = cluster
+    let value = 41
+    let increment() = cluster.Run(cloud { return value + 1})
+
+Session2.increment()
+
+(*
+
+Can you explain why the behaviour of the above differs from the original example?
+
+
 
 //////////////////////////////////////////////////
-// Section 2: Cloud workflows and object identity
+// Section 3: Cloud workflows and object identity
 
 Consider the following snippet:
 
@@ -124,7 +166,7 @@ Can you explain why this behaviour happens?
 
 
 ///////////////////////////////////////////
-// Section 2: Cloud workflows and mutation
+// Section 4: Cloud workflows and mutation
 
 Consider the following sample:
 
